@@ -1,0 +1,379 @@
+name: Window opener
+products:
+  - id: jjhmwwetqhqa1u3z
+    manufacturer: Alesinx
+    model: O-Air
+entities:
+  - entity: cover
+    class: window
+    dps:
+      - id: 101
+        type: string
+        name: control
+        mapping:
+          - dps_val: OPEN
+            value: open
+          - dps_val: CLOSE
+            value: close
+      - id: 119
+        type: string
+        name: action
+        mapping:
+          - dps_val: OPEN
+            value: opened
+          - dps_val: CLOSE
+            value: closed
+          - dps_val: VENTILATE
+            value: opened
+          - dps_val: MICRO
+            value: opened
+          - dps_val: EXT_OPEN
+            value: opened
+          - dps_val: OPENING
+            value: opening
+          - dps_val: VENT_OPENING
+            value: opening
+          - dps_val: MICRO_OPENING
+            value: opening
+          - dps_val: CLOSING
+            value: closing
+  - entity: sensor
+    name: Opening position
+    dps:
+      - id: 132
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: button
+    name: Open
+    dps:
+      - id: 101
+        type: string
+        name: button
+        mapping:
+          - dps_val: OPEN
+            value: true
+  - entity: button
+    name: Ventilate
+    dps:
+      - id: 101
+        type: string
+        name: button
+        mapping:
+          - dps_val: VENTILATE
+            value: true
+  - entity: button
+    name: Micro opening
+    dps:
+      - id: 101
+        type: string
+        name: button
+        mapping:
+          - dps_val: MICRO
+            value: true
+  - entity: button
+    name: Close
+    dps:
+      - id: 101
+        type: string
+        name: button
+        mapping:
+          - dps_val: CLOSE
+            value: true
+  - entity: button
+    name: Calibrate
+    category: config
+    dps:
+      - id: 101
+        type: string
+        name: button
+        mapping:
+          - dps_val: CALIBRATE
+            value: true
+  - entity: number
+    translation_key: maximum_temperature
+    class: temperature
+    category: config
+    dps:
+      - id: 106
+        type: integer
+        name: value
+        unit: C
+        range:
+          min: 0
+          max: 60
+  - entity: number
+    translation_key: minimum_temperature
+    class: temperature
+    category: config
+    dps:
+      - id: 107
+        type: integer
+        optional: true
+        name: value
+        unit: C
+        range:
+          min: 0
+          max: 60
+  - entity: number
+    translation_key: sensor_threshold
+    translation_placeholders:
+      sensor: TVOC
+    class: volatile_organic_compounds_parts
+    category: config
+    dps:
+      - id: 108
+        type: integer
+        optional: true
+        name: value
+        unit: ppb
+        range:
+          min: 1
+          max: 9999
+  - entity: switch
+    name: Scenario
+    category: config
+    dps:
+      - id: 109
+        type: boolean
+        optional: true
+        name: switch
+  - entity: select
+    name: Scenario action
+    category: config
+    dps:
+      - id: 110
+        type: string
+        name: option
+        mapping:
+          - dps_val: OPEN
+            value: Open
+          - dps_val: CLOSE
+            value: Close
+          - dps_val: MICRO
+            value: Micro
+          - dps_val: VENTILATE
+            value: Ventilate
+  - entity: switch
+    translation_key: timer
+    category: config
+    dps:
+      - id: 111
+        type: boolean
+        name: switch
+  - entity: number
+    name: Opening interval
+    class: duration
+    category: config
+    dps:
+      - id: 112
+        type: integer
+        name: value
+        unit: min
+        range:
+          min: 0
+          max: 1440
+  - entity: number
+    name: Opening duration
+    class: duration
+    category: config
+    dps:
+      - id: 113
+        type: integer
+        name: value
+        unit: min
+        range:
+          min: 1
+          max: 1440
+  - entity: number
+    name: Belt retraction limit
+    category: config
+    hidden: true
+    dps:
+      - id: 114
+        type: integer
+        name: value
+        range:
+          min: 100
+          max: 1000
+  - entity: number
+    name: Current overload threshold
+    category: config
+    hidden: true
+    dps:
+      - id: 115
+        type: integer
+        name: value
+        range:
+          min: 100
+          max: 700
+  - entity: switch
+    translation_key: sound
+    category: config
+    dps:
+      - id: 116
+        type: boolean
+        name: switch
+  - entity: sensor
+    name: Open time remaining
+    class: duration
+    dps:
+      - id: 117
+        type: integer
+        name: sensor
+        unit: min
+        class: measurement
+  - entity: sensor
+    name: Time until next opening
+    class: duration
+    dps:
+      - id: 118
+        type: integer
+        optional: true
+        name: sensor
+        unit: min
+        class: measurement
+  - entity: sensor
+    name: TVOC
+    class: volatile_organic_compounds_parts
+    dps:
+      - id: 120
+        type: integer
+        name: sensor
+        unit: ppb
+        class: measurement
+  - entity: sensor
+    class: temperature
+    dps:
+      - id: 121
+        type: integer
+        name: sensor
+        unit: C
+        class: measurement
+  - entity: sensor
+    class: humidity
+    dps:
+      - id: 122
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: sensor
+    class: battery
+    category: diagnostic
+    dps:
+      - id: 123
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: sensor
+    class: atmospheric_pressure
+    dps:
+      - id: 127
+        type: integer
+        name: sensor
+        unit: mmHg
+        class: measurement
+  - entity: sensor
+    name: WiFi signal
+    category: diagnostic
+    dps:
+      - id: 128
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: number
+    name: Opening limit
+    icon: "mdi:angle-acute"
+    category: config
+    dps:
+      - id: 129
+        type: integer
+        name: value
+        unit: "%"
+        range:
+          min: 0
+          max: 100
+  - entity: sensor
+    name: Wind level
+    dps:
+      - id: 130
+        type: integer
+        optional: true
+        name: sensor
+        class: measurement
+  - entity: sensor
+    name: Last event
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 131
+        type: string
+        name: sensor
+        mapping:
+          - dps_val: TEMPHI
+            value: High temperature
+          - dps_val: TEMPLO
+            value: Low temperature
+          - dps_val: TEMPBACK
+            value: Temperature restored
+          - dps_val: AIRQBAD
+            value: High TVOC
+          - dps_val: AIRQBACK
+            value: TVOC restored
+          - dps_val: TIMEREVT
+            value: Timer
+          - dps_val: EXTOPEN
+            value: External opening
+          - dps_val: BATTLOW
+            value: Low battery
+          - dps_val: WINDHI
+            value: High wind
+          - dps_val: CLOSEFAIL
+            value: Closing failed
+          - dps_val: CUROVLOAD
+            value: Current overload
+          - dps_val: REBOOT
+            value: Reboot
+          - dps_val: OPENFAIL
+            value: Opening failed
+  - entity: lock
+    translation_key: child_lock
+    category: config
+    dps:
+      - id: 133
+        type: boolean
+        name: lock
+  - entity: switch
+    name: TVOC display
+    category: config
+    dps:
+      - id: 134
+        type: boolean
+        name: switch
+  # The cloud model does not specify units or encoding for these corrections.
+  - entity: number
+    name: Humidity calibration
+    category: config
+    hidden: true
+    dps:
+      - id: 135
+        type: integer
+        name: value
+        range:
+          min: 0
+          max: 99
+  - entity: number
+    name: Heater time correction
+    category: config
+    hidden: true
+    dps:
+      - id: 136
+        type: integer
+        name: value
+        range:
+          min: 0
+          max: 99
