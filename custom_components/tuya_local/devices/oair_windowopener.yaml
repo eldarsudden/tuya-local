@@ -156,6 +156,7 @@ entities:
           - dps_val: VENTILATE
             value: Ventilate
   - entity: switch
+    name: Opening timer
     translation_key: timer
     category: config
     dps:
