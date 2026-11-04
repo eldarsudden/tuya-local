@@ -92,6 +92,7 @@ entities:
           - dps_val: CALIBRATE
             value: true
   - entity: number
+    name: Scenario maximum temperature
     translation_key: maximum_temperature
     class: temperature
     category: config
@@ -104,6 +105,7 @@ entities:
           min: 0
           max: 60
   - entity: number
+    name: Scenario minimum temperature
     translation_key: minimum_temperature
     class: temperature
     category: config
@@ -117,6 +119,7 @@ entities:
           min: 0
           max: 60
   - entity: number
+    name: Scenario TVOC threshold
     translation_key: sensor_threshold
     translation_placeholders:
       sensor: TVOC
